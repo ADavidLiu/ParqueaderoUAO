@@ -29,7 +29,7 @@ CREATE TABLE `entradas` (
   PRIMARY KEY (`idEntrada`),
   KEY `placaVehiculoEntrada` (`placaVehiculoEntrada`),
   CONSTRAINT `entradas_ibfk_1` FOREIGN KEY (`placaVehiculoEntrada`) REFERENCES `vehiculos` (`placa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +38,7 @@ CREATE TABLE `entradas` (
 
 LOCK TABLES `entradas` WRITE;
 /*!40000 ALTER TABLE `entradas` DISABLE KEYS */;
+INSERT INTO `entradas` VALUES (1,'POIUYT','2016-04-10 00:03:51'),(2,'JHGUYT','2016-04-10 00:04:35'),(3,'POIUYT','2016-04-10 00:43:18'),(4,'POIUYT','2016-04-10 00:44:22'),(12,'123QWE','2016-04-10 01:13:27'),(13,'123QWE','2016-04-10 01:14:09');
 /*!40000 ALTER TABLE `entradas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +134,8 @@ CREATE TABLE `ultimo_conductor` (
   `placaVehiculoUltimoConductor` varchar(6) NOT NULL,
   `ultimaFotoConductor` blob NOT NULL,
   PRIMARY KEY (`codigoUltimoConductor`),
-  KEY `placaVehiculoUltimoConductor` (`placaVehiculoUltimoConductor`)
+  KEY `placaVehiculoUltimoConductor` (`placaVehiculoUltimoConductor`),
+  CONSTRAINT `ultimo_conductor_ibfk_1` FOREIGN KEY (`placaVehiculoUltimoConductor`) REFERENCES `vehiculos` (`placa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -158,6 +160,7 @@ CREATE TABLE `usuarios` (
   `nombre1` varchar(10) NOT NULL,
   `nombre2` varchar(10) DEFAULT NULL,
   `apellido1` varchar(10) NOT NULL,
+  `apellido2` varchar(10) DEFAULT NULL,
   `identificacionUsu` varchar(10) NOT NULL,
   `edad` int(11) NOT NULL,
   `foto` blob NOT NULL,
@@ -187,8 +190,6 @@ CREATE TABLE `vehiculos` (
   `placa` varchar(6) NOT NULL,
   `modelo` varchar(15) NOT NULL,
   `color` varchar(10) NOT NULL,
-  `horaEntrada` datetime NOT NULL,
-  `idVehiculo` int(11) NOT NULL,
   PRIMARY KEY (`placa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -199,7 +200,7 @@ CREATE TABLE `vehiculos` (
 
 LOCK TABLES `vehiculos` WRITE;
 /*!40000 ALTER TABLE `vehiculos` DISABLE KEYS */;
-INSERT INTO `vehiculos` VALUES ('ASDFGH','2012','Azul','2016-04-09 21:28:05',0),('QWERTY','2011','Verde','2016-04-09 21:27:35',0),('sdf21f','2015','Rojo','2016-04-09 20:36:31',0),('ZXCVBN','2013','Amarillo','2016-04-09 21:30:41',0);
+INSERT INTO `vehiculos` VALUES ('123QWE','1920','Fucsia'),('ASDFGH','2012','Azul'),('JHGUYT','2001','Azul'),('JKLUIO','2000','Naranja'),('POIUYT','2002','Morado'),('QWERTY','2011','Verde'),('sdf21f','2015','Rojo'),('ZXCVBN','2013','Amarillo');
 /*!40000 ALTER TABLE `vehiculos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -212,4 +213,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-09 22:33:29
+-- Dump completed on 2016-04-10 16:34:03
