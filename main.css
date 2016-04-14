@@ -117,11 +117,60 @@ body {
   font-family: "Oswald", sans-serif;
   position: relative;
   z-index: 1; }
-  #contenido .seccion-formulario {
+  #contenido .seccion-formulario,
+  #contenido .fichas {
     background-color: white;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     padding: 30px 30px; }
+  #contenido h2 {
+    font-size: 35px;
+    margin-bottom: 40px;
+    color: #FFA800;
+    padding-left: 0; }
+    #contenido h2:after {
+      content: "";
+      width: 40%;
+      height: 2px;
+      background-color: #FFA800;
+      position: absolute;
+      bottom: -20px;
+      top: auto;
+      left: 0;
+      right: auto; }
+  #contenido .fichas-wrapper {
+    padding: 0;
+    position: relative; }
+    #contenido .fichas-wrapper h2 {
+      color: #FFA800;
+      margin-top: 53px; }
+      #contenido .fichas-wrapper h2:after {
+        bottom: auto;
+        top: 111px; }
+  #contenido .fichas {
+    background-color: #FFA800;
+    text-align: center; }
+    #contenido .fichas h3 {
+      color: white;
+      border-bottom: none;
+      font-size: 60px;
+      margin: 0; }
+  #contenido #btn-procesar-wrapper {
+    padding: 0;
+    position: relative;
+    z-index: 6; }
+  #contenido .btn-procesar {
+    background-color: #FFA800;
+    border: none;
+    color: white;
+    margin-top: 53px;
+    width: 100%;
+    padding: 0px 5px;
+    border-radius: 4px;
+    line-height: 60px;
+    cursor: pointer;
+    font-size: 22px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); }
   #contenido span.requerido {
     color: #FFA800;
     margin-left: 2px; }
@@ -141,24 +190,20 @@ body {
     border-bottom: 1px solid #FFA800;
     padding-left: 0;
     margin-bottom: 25px; }
-  #contenido h2 {
-    font-size: 35px;
-    margin-bottom: 40px;
-    color: #FFA800;
-    padding-left: 0; }
 
 /* BOTONES EXTRA */
 .infoVisible {
   opacity: 1 !important;
-  right: 75px !important; }
+  right: 75px !important;
+  visibility: visible !important; }
 
 .btn-extras {
   position: fixed;
-  z-index: 4;
   right: 20px;
   left: auto;
   top: auto;
-  bottom: 20px; }
+  bottom: 30px;
+  z-index: 2; }
   .btn-extras .ayuda,
   .btn-extras .info {
     cursor: pointer;
@@ -194,34 +239,36 @@ body {
     position: absolute;
     left: auto;
     right: 45px;
-    bottom: 0;
+    bottom: -20px;
     top: auto;
     background-color: white;
     border-radius: 4px;
     padding: 15px;
     font-family: "Oswald", sans-serif;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
     opacity: 0;
     transition: all .25s;
-    z-index: 1; }
+    z-index: 1;
+    visibility: hidden; }
     .btn-extras .burbujaExtrasInfo :after,
     .btn-extras .burbujaExtrasAyuda :after {
       content: "";
+      position: absolute;
       width: 0;
       height: 0;
-      border-style: solid;
-      border-width: 10px 0 10px 10px;
-      border-color: transparent transparent transparent white;
-      position: absolute;
-      right: -10px;
+      box-sizing: border-box;
+      border: 10px solid black;
+      border-color: transparent transparent white white;
+      box-shadow: -2px 3px 3px rgba(0, 0, 0, 0.2);
+      top: 50%;
+      transform: translateY(-50%) rotate(-135deg);
       left: auto;
-      bottom: 15px;
-      top: auto; }
+      right: -10px; }
     .btn-extras .burbujaExtrasInfo p,
     .btn-extras .burbujaExtrasAyuda p {
       margin: 0; }
   .btn-extras .burbujaExtrasAyuda {
-    bottom: 70px; }
+    bottom: 60px; }
 
 /* MEDIA QUERIES */
 @media screen and (min-width: 768px) {

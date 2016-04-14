@@ -19,8 +19,28 @@
 
 <body>
 
+    <div class="btn-extras">
+        <div class="ayuda-wrapper">
+            <div class="ayuda">
+                <i class="fa fa-question" aria-hidden="true"></i>
+            </div>
+            <div class="burbujaExtrasAyuda">
+                <p>Seleccione una opción del menú lateral para realizar cambios y consultas en la Base de Datos</p>
+            </div>
+        </div>
+        <div class="info-wrapper">
+            <div class="info">
+                <i class="fa fa-info" aria-hidden="true"></i>
+            </div>
+            <div class="burbujaExtrasInfo">
+                <p>Proyecto final para la asignatura de Bases de Datos Multimedia 2016-01 UAO, por Andrés David Liu Fong y Nilson Jacob Gonzales Campo</p>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <div class="row">
+
             <nav id="menu">
                 <ul>
                     <li class="barra-horizontal">
@@ -49,6 +69,7 @@
                     </li>
                 </ul>
             </nav>
+
             <div class="col-xs-12 col-sm-9 col-sm-offset-2" id="contenido">
                 <h2 class="col-xs-12 col-sm-6">Datos del conductor</h2>
                 <h2 class="col-xs-12 col-sm-5 col-sm-offset-1">Datos del vehículo</h2>
@@ -57,11 +78,11 @@
                         <div class="col-xs-12 col-sm-6 seccion-formulario">
                             <div class="form-group">
                                 <label for="codigo">Código<span class="requerido">*</span></label>
-                                <input required type="text" class="form-control" id="codigo">
+                                <input type="text" class="form-control" id="codigo">
                             </div>
                             <div class="form-group">
                                 <label for="nombre1">Nombre 1<span class="requerido">*</span></label>
-                                <input required type="text" class="form-control" id="nombre1">
+                                <input type="text" class="form-control" id="nombre1">
                             </div>
                             <div class="form-group">
                                 <label for="nombre2">Nombre 2</label>
@@ -69,7 +90,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="apellido1">Apellido 1<span class="requerido">*</span></label>
-                                <input required type="text" class="form-control" id="apellido1">
+                                <input type="text" class="form-control" id="apellido1">
                             </div>
                             <div class="form-group">
                                 <label for="apellido2">Apellido 2</label>
@@ -77,58 +98,55 @@
                             </div>
                             <div class="form-group">
                                 <label for="identificacionUsu">Identificación<span class="requerido">*</span></label>
-                                <input required type="text" class="form-control" id="identificacionUsu">
+                                <input type="text" class="form-control" id="identificacionUsu">
                             </div>
                             <div class="form-group">
                                 <label for="edad">Edad<span class="requerido">*</span></label>
-                                <input required type="text" class="form-control" id="edad">
+                                <input type="number" class="form-control" id="edad">
                             </div>
                             <div class="form-group">
                                 <label for="foto">Foto<span class="requerido">*</span></label>
-                                <input required type="text" class="form-control" id="foto">
+                                <input type="text" class="form-control" id="foto">
+                            </div>
+                            <div class="form-group">
+                                <label for="pago">¿Pagó?<span class="requerido">*</span></label>
+                                <input type="number" class="form-control" id="pago" min="0" max="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaVencimiento">Fecha de vencimiento<span class="requerido">*</span></label>
+                                <input type="text" class="form-control" id="fechaVencimiento">
                             </div>
                         </div>
+
                         <div class="col-xs-12 col-sm-5 col-sm-offset-1 seccion-formulario">
                             <div class="form-group">
                                 <label for="placa">Placa<span class="requerido">*</span></label>
-                                <input required type="text" class="form-control" id="placa">
+                                <input type="text" class="form-control" id="placa">
                             </div>
                             <div class="form-group">
                                 <label for="modelo">Modelo<span class="requerido">*</span></label>
-                                <input required type="text" class="form-control" id="modelo">
+                                <input type="text" class="form-control" id="modelo">
                             </div>
                             <div class="form-group">
                                 <label for="color">Color<span class="requerido">*</span></label>
-                                <input required type="text" class="form-control" id="color">
+                                <input type="text" class="form-control" id="color">
                             </div>
                         </div>
-                        <div class="col-xs-12">
-                            <button type="submit" class="btn btn-success">
-                                Insertar
-                            </button>
+
+                        <div class="col-xs-12 col-sm-5 col-sm-offset-1 fichas-wrapper">
+                            <h2>Ficha actual</h2>
+                            <div class="fichas">
+                                <h3>15</h3>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12" id="btn-procesar-wrapper">
+                            <button type="submit" class="btn-procesar">Procesar</button>
                         </div>
                     </div>
                 </form>
             </div>
-        </div>
-    </div>
 
-    <div class="btn-extras">
-        <div class="ayuda-wrapper">
-            <div class="ayuda">
-                <i class="fa fa-question" aria-hidden="true"></i>
-            </div>
-            <div class="burbujaExtrasAyuda">
-                <p>Seleccione una opción del menú lateral para realizar cambios y consultas en la Base de Datos</p>
-            </div>
-        </div>
-        <div class="info-wrapper">
-            <div class="info">
-                <i class="fa fa-info" aria-hidden="true"></i>
-            </div>
-            <div class="burbujaExtrasInfo">
-                <p>Proyecto final para la asignatura de Bases de Datos Multimedia 2016-01 UAO, por Andrés David Liu Fong y Nilson Jacob Gonzales Campo</p>
-            </div>
         </div>
     </div>
 

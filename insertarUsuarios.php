@@ -1,15 +1,47 @@
-<?php 
-    include("conexion.php");
-        if(isset($_POST['codigo'])&& !empty($_POST['codigo']) && isset($_POST['nombre1']) && !empty($_POST['nombre1']) && isset($_POST['apellido1']) && !empty($_POST['apellido1']) && isset($_POST['identificacion']) && !empty($_POST['identificacion']) && isset($_POST['edad']) && !empty($_POST['edad']))
-        {
-        //$fechavencimiento = "'".date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $_POST['pagovencimiento'])))."'";
-        //$fechavencimiento=date_default_timezone_get(UTC);
+<?php
+    
+    // Inicia la conexión predefinida con la base de datos
+    $servername = "localhost";
+    $username = "root";
+    $password = "root"; // Password de la base de datos local
+    $dbname = "parqueaderouao";
+    
+    // Crea la conexión
+    $conexion = new mysqli($servername, $username, $password, $dbname);
 
-        $con = mysql_connect($host,$user,$pw)or die("problemas al conectar");
-        mysql_select_db($db,$con)or die ("problemas al conectar a la base de datos");
-        mysql_query("INSERT INTO USUARIOS (codigo,nombre1,nombre2,apellido1,apellido2,identificacion,edad,pago) VALUES ('$_POST[codigo]','$_POST[nombre1]','$_POST[nombre2]','$_POST[apellido1]','$_POST[apellido2]','$_POST[identificacion]',$_POST[edad],$_POST[pago])",$con);
+    $codigo = $_POST["codigo"];
+    $nombre1 = $_POST["nombre1"];
+    $nombre2 = $_POST["nombre2"];
+    $apellido1 = $_POST["apellido1"];
+    $apellido2 = $_POST["apellido2"];
+    $identificacion = $_POST["identificacion"];
+    $edad = $_POST["edad"];
+    //$foto = $_POST["foto"];
+    $pago = $_POST["pago"];
+    //$fechaVencimiento = $_POST["fechaVencimiento"];
 
-    }else{
-        echo "Problemas al insertar";
+    $existeUsuario = false;
+
+    $sql = "SELECT codigo from usuarios";
+    $resultados = $conexion->query($sql);
+    
+    if ($resultados->num_rows > 0) {
+        while($ocurrencia = $resultados->fetch_assoc()) {
+            if ($codigo == $ocurrencia["codigo"]) {
+                $existeUsuario = true;
+                break;
+            }
+        }
+        if ($existeUsuario == false) {
+            $sql = "INSERT INTO usuarios (codigo, nombre1, nombre2, apellido1, apellido2, identificacionUsu, edad, pago) VALUES ('$codigo', '$nombre1', '$nombre2', '$apellido1', '$apellido2', '$identificacion', '$edad', '$pago')";
+            $conexion->query($sql);
+        }
+    } else {
+        $sql = "INSERT INTO usuarios (codigo, nombre1, nombre2, apellido1, apellido2, identificacionUsu, edad, pago) VALUES ('$codigo', '$nombre1', '$nombre2', '$apellido1', '$apellido2', '$identificacion', '$edad', '$pago')";
+        $conexion->query($sql);
     }
+
+    // Cierra la conexión
+    $conexion->close();
+
 ?>

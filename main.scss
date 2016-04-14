@@ -77,7 +77,6 @@ body {
                     height: 50px;
                     width: auto;
                     position: absolute;
-                    //left: 25px;
                     left: 15px;
                     right: auto;
                     top: 50%;
@@ -151,11 +150,69 @@ body {
     font-family: $font-titles;
     position: relative;
     z-index: 1;
-    .seccion-formulario {
+    .seccion-formulario,
+    .fichas {
         background-color: white;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         border-radius: 4px;
         padding: 30px 30px;
+    }
+    h2 {
+        font-size: 35px;
+        margin-bottom: 40px;
+        color: $color-accent;
+        padding-left: 0;
+        &:after {
+            content: "";
+            width: 40%;
+            height: 2px;
+            background-color: $color-accent;
+            position: absolute;
+            bottom: -20px;
+            top: auto;
+            left: 0;
+            right: auto;
+        }
+    }
+    .fichas-wrapper {
+        padding: 0;
+        position: relative;
+        h2 {
+            color: $color-accent;
+            margin-top: 53px;
+            &:after {
+            bottom: auto;
+            top: 111px;
+        }
+        }
+    }
+    .fichas {
+        background-color: $color-accent;
+        text-align: center;
+        h3 {
+            color: white;
+            border-bottom: none;
+            font-size: 60px;
+            margin: 0;
+        }
+    }
+    #btn-procesar-wrapper {
+        padding: 0;
+        position: relative;
+        z-index: 6;
+    }
+    .btn-procesar {
+        background-color: $color-accent;
+        border: none;
+        color: white;
+        margin-top: 53px;
+        width: 100%;
+        padding: 0px 5px;
+        border-radius: 4px;
+        line-height: 60px;
+        cursor: pointer;
+        font-size: 22px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     }
     span.requerido {
         color: $color-accent;
@@ -180,12 +237,6 @@ body {
         padding-left: 0;
         margin-bottom: 25px;
     }
-    h2 {
-        font-size: 35px;
-        margin-bottom: 40px;
-        color: $color-accent;
-        padding-left: 0;
-    }
 }
 
 
@@ -194,15 +245,16 @@ body {
 .infoVisible {
     opacity: 1 !important;
     right: 75px !important;
+    visibility: visible !important;
 }
 
 .btn-extras {
     position: fixed;
-    z-index: 4;
     right: 20px;
     left: auto;
     top: auto;
-    bottom: 20px;
+    bottom: 30px;
+    z-index: 2;
     .ayuda,
     .info {
         cursor: pointer;
@@ -242,35 +294,37 @@ body {
         position: absolute;
         left: auto;
         right: 45px;
-        bottom: 0;
+        bottom: -20px;
         top: auto;
         background-color: white;
         border-radius: 4px;
         padding: 15px;
         font-family: $font-titles;
-        box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
         opacity: 0;
         transition: all .25s;
         z-index: 1;
+        visibility: hidden;
         :after {
             content: "";
+            position: absolute;
             width: 0;
             height: 0;
-            border-style: solid;
-            border-width: 10px 0 10px 10px;
-            border-color: transparent transparent transparent white;
-            position: absolute;
-            right: -10px;
+            box-sizing: border-box;
+            border: 10px solid black;
+            border-color: transparent transparent white white;
+            box-shadow: -2px 3px 3px rgba(0, 0, 0, 0.2);
+            top: 50%;
+            transform: translateY(-50%) rotate(-135deg);
             left: auto;
-            bottom: 15px;
-            top: auto;
+            right: -10px;
         }
         p {
             margin: 0;
         }
     }
     .burbujaExtrasAyuda {
-        bottom: 70px;
+        bottom: 60px;
     }
 }
 

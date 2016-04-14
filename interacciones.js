@@ -34,6 +34,8 @@ $(document).ready(function () {
     labelPlaca = $("label[for='placa']");
     labelModelo = $("label[for='modelo']");
     labelColor = $("label[for='color']");
+    labelPago = $("label[for='pago']");
+    labelFechaVencimiento = $("label[for='fechaVencimiento']");
 
     inputCodigo = $("input#codigo");
     inputNombre1 = $("input#nombre1");
@@ -46,8 +48,13 @@ $(document).ready(function () {
     inputPlaca = $("input#placa");
     inputModelo = $("input#modelo");
     inputColor = $("input#color");
+    inputPago = $("input#pago");
+    inputFechaVencimiento = $("input#fechaVencimiento");
 
     var infoVisible = false;
+    var ayudaVisible = false;
+    btnExtras = $(".btn-extras");
+
     info = $(".btn-extras .info");
     burbujaInfo = $(".btn-extras .info-wrapper .burbujaExtrasInfo");
 
@@ -56,16 +63,27 @@ $(document).ready(function () {
 
     function mostrarInfoExtra(elemento, elementoInfo) {
         elemento.click(function () {
-            if (!infoVisible) {
-                elementoInfo.addClass("infoVisible");
-                infoVisible = true;
-            } else {
-                elementoInfo.removeClass("infoVisible");
-                infoVisible = false;
+            if (elemento == info) {
+                if (!infoVisible) {
+                    elementoInfo.addClass("infoVisible");
+                    infoVisible = true;
+                } else {
+                    elementoInfo.removeClass("infoVisible");
+                    infoVisible = false;
+                }
+            }
+            if (elemento == ayuda) {
+                if (!ayudaVisible) {
+                    elementoInfo.addClass("infoVisible");
+                    ayudaVisible = true;
+                } else {
+                    elementoInfo.removeClass("infoVisible");
+                    ayudaVisible = false;
+                }
             }
         });
     }
-    
+
     mostrarInfoExtra(ayuda, burbujaAyuda);
     mostrarInfoExtra(info, burbujaInfo);
 
@@ -94,6 +112,8 @@ $(document).ready(function () {
     cambiarFocus(inputPlaca, labelPlaca);
     cambiarFocus(inputModelo, labelModelo);
     cambiarFocus(inputColor, labelColor);
+    cambiarFocus(inputPago, labelPago);
+    cambiarFocus(inputFechaVencimiento, labelFechaVencimiento);
 
     var menuItems = [
         itemIngresos,
