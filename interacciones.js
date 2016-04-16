@@ -1,3 +1,5 @@
+var registrado = false;
+
 $(document).ready(function () {
     // Estilos e interacciones
     menuItem = $("#menu li");
@@ -50,6 +52,9 @@ $(document).ready(function () {
     inputColor = $("input#color");
     inputPago = $("input#pago");
     inputFechaVencimiento = $("input#fechaVencimiento");
+    
+    inputsUsuario = $("#datosUsuario input");
+    labelsRequeridos = $("div.form-group > label:not([for='placa'])");
 
     var infoVisible = false;
     var ayudaVisible = false;
@@ -60,6 +65,26 @@ $(document).ready(function () {
 
     ayuda = $(".btn-extras .ayuda");
     burbujaAyuda = $(".btn-extras .ayuda-wrapper .burbujaExtrasAyuda");
+
+    btnDeshabilitarWrapper = $(".deshabilitar-wrapper");
+    btnDeshabilitar = $(".btn-deshabilitar");
+
+    btnDeshabilitarWrapper.click(function () {
+        if (!registrado) {
+            btnDeshabilitar.addClass("habilitado");
+            inputsUsuario.attr("disabled", true).addClass("inputsDeshabilitados");
+            inputModelo.attr("disabled", true).addClass("inputsDeshabilitados");
+            inputColor.attr("disabled", true).addClass("inputsDeshabilitados");
+            labelsRequeridos.addClass("labelsDeshabilitados");
+            registrado = true;
+        } else {
+            btnDeshabilitar.removeClass("habilitado");
+            inputsUsuario.attr("disabled", false).removeClass("inputsDeshabilitados");
+            inputModelo.attr("disabled", false).removeClass("inputsDeshabilitados");
+            inputColor.attr("disabled", false).removeClass("inputsDeshabilitados"); labelsRequeridos.removeClass("labelsDeshabilitados");
+            registrado = false;
+        }
+    });
 
     function mostrarInfoExtra(elemento, elementoInfo) {
         elemento.click(function () {

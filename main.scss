@@ -40,7 +40,7 @@ body {
 }
 
 .inputHover {
-    border-bottom: 3px solid $color-accent;
+    border-bottom: 3px solid $color-accent !important;
 }
 
 
@@ -144,12 +144,58 @@ body {
 
 /* CONTENIDO STYLES */
 
+.inputsDeshabilitados {
+    border-bottom: 1px solid #de9200 !important;
+    background-color: #f3f3f3 !important;
+}
+
+.labelsDeshabilitados {
+    color: #cbcbcb !important;
+    margin-left: 10px !important;
+    transition: all .25s !important;
+}
+
 #contenido {
     padding-top: 15px;
     padding-bottom: 30px;
     font-family: $font-titles;
     position: relative;
     z-index: 1;
+    .deshabilitar-wrapper {
+        position: relative;
+        left: 30px;
+        cursor: pointer;
+        width: 160px;
+        margin-bottom: 40px;
+        .btn-deshabilitar {
+            width: 16px;
+            height: 16px;
+            background-color: transparent;
+            border: 1px solid $color-accent;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -30px;
+            right: auto;
+            &:before {
+                transition: scale .25s;
+                content: "";
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%) scale(0);
+                background-color: $color-accent;
+                transition: all .25s;
+            }
+            &.habilitado {
+                &:before {
+                    transform: translateX(-50%) translateY(-50%) scale(1);
+                }
+            }
+        }
+    }
     .seccion-formulario,
     .fichas {
         background-color: white;
@@ -164,7 +210,7 @@ body {
         padding-left: 0;
         &:after {
             content: "";
-            width: 40%;
+            width: 120px;
             height: 2px;
             background-color: $color-accent;
             position: absolute;
@@ -181,9 +227,9 @@ body {
             color: $color-accent;
             margin-top: 53px;
             &:after {
-            bottom: auto;
-            top: 111px;
-        }
+                bottom: auto;
+                top: 111px;
+            }
         }
     }
     .fichas {
@@ -236,6 +282,8 @@ body {
         border-bottom: 1px solid $color-accent;
         padding-left: 0;
         margin-bottom: 25px;
+        margin-left: 0;
+        transition: all .5s;
     }
 }
 
