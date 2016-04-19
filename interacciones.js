@@ -53,8 +53,8 @@ $(document).ready(function () {
     inputPago = $("input#pago");
     inputFechaVencimiento = $("input#fechaVencimiento");
     
-    inputsUsuario = $("#datosUsuario input");
-    labelsRequeridos = $("div.form-group > label:not([for='placa'])");
+    inputsUsuario = $("#datosUsuario input:not(#codigo)");
+    labelsRequeridos = $("div.form-group > label:not([for='placa'], [for='codigo'])");
 
     var infoVisible = false;
     var ayudaVisible = false;
@@ -84,6 +84,7 @@ $(document).ready(function () {
             inputColor.attr("disabled", false).removeClass("inputsDeshabilitados"); labelsRequeridos.removeClass("labelsDeshabilitados");
             registrado = false;
         }
+        console.log(registrado);
     });
 
     function mostrarInfoExtra(elemento, elementoInfo) {

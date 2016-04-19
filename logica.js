@@ -17,6 +17,8 @@ $(document).ready(function () {
     fechaVencimientoIn = $("input#fechaVencimiento");
 
     fichaActual = $(".fichas h3");
+    
+    inputsTodos = $("input");
 
     // Número de lugares disponibles en el parqueadero
     var numFichas = 3;
@@ -28,7 +30,7 @@ $(document).ready(function () {
 
         if (numFichas > 0) {
 
-            numFichas = numFichas - 1;
+            numFichas -= 1;
             if (numFichas <= 0) {
                 fichaActual.text("Lleno");
                 numFichas = 0;
@@ -78,7 +80,6 @@ $(document).ready(function () {
             }, function () {
                 alert("Ficha procesada...");
             });
-            console.log("numFichas al final: " + numFichas);
         } else {
             fichaActual.text("Lleno");
             numFichas = 0;
