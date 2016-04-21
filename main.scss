@@ -272,6 +272,9 @@ body {
         top: auto;
         bottom: 0;
         transition: bottom .25s;
+        &#fechaLabel {
+            bottom: 25px;
+        }
     }
     input {
         border: none;
@@ -284,6 +287,52 @@ body {
         margin-bottom: 25px;
         margin-left: 0;
         transition: all .5s;
+        &#busqUsuario,
+        &#busqUltimoUsuario {
+            margin: 0;
+        }
+    }
+    #camera-wrapper {
+        text-align: center;
+        textarea {
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+    img#foto,
+    #camara,
+    img#fotoBusquedaUsu,
+    img#fotoBusquedaUltUsu {
+        border: 2px solid $color-accent;
+        width: 100%;
+        height: auto;
+        min-height: 340px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    #buscarUsuarios {
+        div.form-group {
+            padding-left: 0;
+        }
+    }
+    .btnCam {
+        text-align: center;
+        cursor: pointer;
+        background-color: $color-accent;
+        color: white;
+        border-radius: 4px;
+        padding: 10px 0;
+    }
+    .resultadoBusquedaUsu {
+        font-weight: bold;
+        margin-bottom: 10px;
+        padding: 0;
+        font-size: 15px;
+        span {
+            font-weight: normal;
+            font-size: 14px;
+        }
     }
 }
 

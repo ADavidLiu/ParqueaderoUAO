@@ -219,6 +219,8 @@ body {
     top: auto;
     bottom: 0;
     transition: bottom .25s; }
+    #contenido label#fechaLabel {
+      bottom: 25px; }
   #contenido input {
     border: none;
     box-shadow: none;
@@ -230,6 +232,41 @@ body {
     margin-bottom: 25px;
     margin-left: 0;
     transition: all .5s; }
+    #contenido input#busqUsuario, #contenido input#busqUltimoUsuario {
+      margin: 0; }
+  #contenido #camera-wrapper {
+    text-align: center; }
+    #contenido #camera-wrapper textarea {
+      width: 100%;
+      margin-top: 10px; }
+  #contenido img#foto,
+  #contenido #camara,
+  #contenido img#fotoBusquedaUsu,
+  #contenido img#fotoBusquedaUltUsu {
+    border: 2px solid #FFA800;
+    width: 100%;
+    height: auto;
+    min-height: 340px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-top: 20px; }
+  #contenido #buscarUsuarios div.form-group {
+    padding-left: 0; }
+  #contenido .btnCam {
+    text-align: center;
+    cursor: pointer;
+    background-color: #FFA800;
+    color: white;
+    border-radius: 4px;
+    padding: 10px 0; }
+  #contenido .resultadoBusquedaUsu {
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 0;
+    font-size: 15px; }
+    #contenido .resultadoBusquedaUsu span {
+      font-weight: normal;
+      font-size: 14px; }
 
 /* BOTONES EXTRA */
 .infoVisible {

@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Formulario
-    formulario = $("form");
+    formularioIngresos = $("form#formIngresos");
     placaIn = $("input#placa");
     modeloIn = $("input#modelo");
     colorIn = $("input#color");
@@ -17,14 +17,100 @@ $(document).ready(function () {
     fechaVencimientoIn = $("input#fechaVencimiento");
 
     fichaActual = $(".fichas h3");
-    
+
     inputsTodos = $("input");
 
     // Número de lugares disponibles en el parqueadero
     var numFichas = 3;
     fichaActual.text(numFichas); // Valor inicial
 
-    formulario.on("submit", function (event) {
+    // Para la cámara
+    $("#camara").scriptcam({
+        showMicrophoneErrors: false,
+        showDebug: false,
+        onError: onError,
+        cornerRadius: 0,
+        cornerColor: '273238',
+        onWebcamReady: onWebcamReady,
+        onPictureAsBase64: base64_tofield_and_image,
+        width: 450,
+        height: 340
+    });
+
+    function base64_tofield() {
+        $('#formfield').val($.scriptcam.getFrameAsBase64());
+    }
+
+    function base64_toimage() {
+        $('#foto').attr("src", "data:image/png;base64," + $.scriptcam.getFrameAsBase64());
+    }
+
+    function mostrarImagen(campoImg, base64) {
+        campoImg.attr("src", "data:image/png;base64," + base64);
+    }
+
+    function base64_tofield_and_image(b64) {
+        $('#formfield').val(b64);
+        $('#foto').attr("src", "data:image/png;base64," + b64);
+    }
+
+    function onWebcamReady(cameraNames, camera, microphoneNames, microphone, volume) {
+        $.each(cameraNames, function (index, text) {
+            $('#cameraNames').append($('<option></option>').val(index).html(text))
+        });
+        $('#cameraNames').val(camera);
+    }
+
+    function onError(errorId, errorMsg) {
+        $("#capturar").attr("disabled", true);
+        $("#btn2").attr("disabled", true);
+        alert(errorMsg);
+    }
+
+    btnCapturar = $("div#capturar");
+    btnCodigo = $("div#codigo");
+    btnMostrarUsuario = $("div#mostrarUsuario");
+    codigoBuscarUsuario = $("input#busqUsuario");
+
+    // Campos para insertar los resultados de la búsqueda
+    campoNombre1 = $("span#resultadoNombre1");
+    campoNombre2 = $("span#resultadoNombre2");
+    campoApellido1 = $("span#resultadoApellido1");
+    campoApellido2 = $("span#resultadoApellido2");
+    campoIdentificacion = $("span#resultadoIdentificacion");
+    campoEdad = $("span#resultadoEdad");
+    campoPago = $("span#resultadoPago");
+    campoVencimiento = $("span#resultadoVencimiento");
+    
+    campoImgUsu = $('#fotoBusquedaUsu');
+
+    // Para recuperar la información de un usuario
+    btnMostrarUsuario.click(function () {
+        $.post("mostrarUsuario.php", {
+            codigo: codigoBuscarUsuario.val()
+        }, function (info) {
+            mostrarImagen(campoImgUsu, info.foto);
+            campoNombre1.text(" " + info.nombre1);
+            campoNombre2.text(" " + info.nombre2);
+            campoApellido1.text(" " + info.apellido1);
+            campoApellido2.text(" " + info.apellido2);
+            campoIdentificacion.text(" " + info.id);
+            campoEdad.text(" " + info.edad);
+            campoPago.text(" " + info.pago);
+            campoVencimiento.text(" " + info.pagoVencimiento);
+        }, "json");
+    });
+
+    btnCodigo.click(function () {
+        base64_tofield();
+    });
+
+    btnCapturar.click(function () {
+        base64_toimage();
+    });
+
+    // Maneja el form submit
+    formularioIngresos.on("submit", function (event) {
         // Evita que se recargue la página
         event.preventDefault();
 
@@ -57,7 +143,7 @@ $(document).ready(function () {
                     apellido2: apellido2In.val(),
                     identificacion: identificacionIn.val(),
                     edad: edadIn.val(),
-                    foto: fotoIn.val(),
+                    foto: $("#formfield").val(),
                     pago: pagoIn.val(),
                     fechaVencimiento: fechaVencimientoIn.val()
                 }, function (respuesta) {

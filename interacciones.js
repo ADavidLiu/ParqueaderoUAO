@@ -1,30 +1,39 @@
+// Variable en el global scope para ser accedida desde logica.js
 var registrado = false;
 
 $(document).ready(function () {
     // Estilos e interacciones
+    // Selectores generales
     menuItem = $("#menu li");
-    registroIngrso = $(".registroIngreso");
     labels = $("label");
     inputs = $("input");
+    
+    // Secciones del menú lateral
+    seccionIngresos = $("#generarIngresos");
+    seccionUsuarios = $("#buscarUsuarios");
 
+    // Items del menú lateral
     itemIngresos = $("#menu li#ingresos");
     itemSalidas = $("#menu li#salidas");
     itemUsuarios = $("#menu li#usuarios");
     itemFichas = $("#menu li#fichas");
     itemUbicacion = $("#menu li#ubicacion");
 
+    // Títulos de cada item del menú lateral
     infoIngresos = $("#menu li#ingresos h4");
     infoSalidas = $("#menu li#salidas h4");
     infoUsuarios = $("#menu li#usuarios h4");
     infoFichas = $("#menu li#fichas h4");
     infoUbicacion = $("#menu li#ubicacion h4");
 
+    // Íconos de cada item del menú lateral
     iconIngresos = $("#menu li#ingresos i.fa");
     iconSalidas = $("#menu li#salidas i.fa");
     iconUsuarios = $("#menu li#usuarios i.fa");
     iconFichas = $("#menu li#fichas i.fa");
     iconUbicacion = $("#menu li#ubicacion i.fa");
 
+    // Labels de cada input del formulario de ingreso
     labelCodigo = $("label[for='codigo']");
     labelNombre1 = $("label[for='nombre1']");
     labelNombre2 = $("label[for='nombre2']");
@@ -39,6 +48,7 @@ $(document).ready(function () {
     labelPago = $("label[for='pago']");
     labelFechaVencimiento = $("label[for='fechaVencimiento']");
 
+    // Inputs del formulario de ingreso
     inputCodigo = $("input#codigo");
     inputNombre1 = $("input#nombre1");
     inputNombre2 = $("input#nombre2");
@@ -53,9 +63,17 @@ $(document).ready(function () {
     inputPago = $("input#pago");
     inputFechaVencimiento = $("input#fechaVencimiento");
     
-    inputsUsuario = $("#datosUsuario input:not(#codigo)");
-    labelsRequeridos = $("div.form-group > label:not([for='placa'], [for='codigo'])");
+    // Label e input del formulario para buscar un usuario
+    inputIdentificacionBusquedaUsu = $("input#busqUsuario");
+    labelIdentificacionBusquedaUsu = $("label[for='busqUsuario']");
+    inputIdentificacionBusquedaUltUsu = $("input#busqUltimoUsuario");
+    labelIdentificacionBusquedaUltUsu = $("label[for='busqUltimoUsuario']");
 
+    // Para deshabilitar campos no requeridos al estar registrado
+    inputsUsuario = $("#datosUsuario input:not(#codigo)");
+    labelsRequeridos = $("form#formIngresos div.form-group > label:not([for='placa'], [for='codigo'])");
+
+    // Para los botones de la esquina inferior derecha
     var infoVisible = false;
     var ayudaVisible = false;
     btnExtras = $(".btn-extras");
@@ -81,10 +99,10 @@ $(document).ready(function () {
             btnDeshabilitar.removeClass("habilitado");
             inputsUsuario.attr("disabled", false).removeClass("inputsDeshabilitados");
             inputModelo.attr("disabled", false).removeClass("inputsDeshabilitados");
-            inputColor.attr("disabled", false).removeClass("inputsDeshabilitados"); labelsRequeridos.removeClass("labelsDeshabilitados");
+            inputColor.attr("disabled", false).removeClass("inputsDeshabilitados");
+            labelsRequeridos.removeClass("labelsDeshabilitados");
             registrado = false;
         }
-        console.log(registrado);
     });
 
     function mostrarInfoExtra(elemento, elementoInfo) {
@@ -110,6 +128,7 @@ $(document).ready(function () {
         });
     }
 
+    // Para mostrar la información entra al hacer click sobre cada botón
     mostrarInfoExtra(ayuda, burbujaAyuda);
     mostrarInfoExtra(info, burbujaInfo);
 
@@ -127,6 +146,7 @@ $(document).ready(function () {
         });
     }
 
+    // Para el efecto al seleccionar cada input
     cambiarFocus(inputCodigo, labelCodigo);
     cambiarFocus(inputNombre1, labelNombre1);
     cambiarFocus(inputNombre2, labelNombre2);
@@ -139,14 +159,16 @@ $(document).ready(function () {
     cambiarFocus(inputModelo, labelModelo);
     cambiarFocus(inputColor, labelColor);
     cambiarFocus(inputPago, labelPago);
-    cambiarFocus(inputFechaVencimiento, labelFechaVencimiento);
+    cambiarFocus(inputIdentificacionBusquedaUsu, labelIdentificacionBusquedaUsu);
+    cambiarFocus(inputIdentificacionBusquedaUltUsu, labelIdentificacionBusquedaUltUsu);
 
+    // Items del menú lateral
     var menuItems = [
         itemIngresos,
         itemSalidas,
         itemUsuarios,
         itemFichas,
-        itemUbicacion,
+        itemUbicacion
     ];
 
     function cambiarActiveItem(elemento) {
@@ -160,6 +182,7 @@ $(document).ready(function () {
         });
     }
 
+    // Para cambiar el estilo del item seleccionado del menú lateral
     cambiarActiveItem(itemIngresos);
     cambiarActiveItem(itemSalidas);
     cambiarActiveItem(itemUsuarios);
@@ -177,22 +200,33 @@ $(document).ready(function () {
             info.removeClass("menuInfoHover");
         });
     }
-
+    
+    // Para el efecto al hover cada item del menú lateral
     hoverMenuItem(itemIngresos, iconIngresos, infoIngresos);
     hoverMenuItem(itemSalidas, iconSalidas, infoSalidas);
     hoverMenuItem(itemUsuarios, iconUsuarios, infoUsuarios);
     hoverMenuItem(itemFichas, iconFichas, infoFichas);
     hoverMenuItem(itemUbicacion, iconUbicacion, infoUbicacion);
 
+    // Secciones del contenido
     var secciones = [
-        registroIngrso.selector,
+        seccionIngresos,
+        seccionUsuarios // Ir agregando a medida que se vayan implementando
     ];
 
-    function cambiarContenido(seccionVisible) {
-        for (i = 0; i < secciones.length; i++) {
-            if (secciones[i] != seccionVisible) {
-                secciones[i].hide();
+    function cambiarContenido(menuItem, seccionVisible) {
+        menuItem.click(function () {
+            for (i = 0; i < secciones.length; i++) {
+                secciones[i].fadeOut("fast");
             }
-        }
+            seccionVisible.fadeIn("fast");
+        });
     }
+    
+    // Oculta todas las secciones excepto la de inicial de ingresos
+    seccionUsuarios.hide();
+
+    // Para mostrar las secciones respectivas desde el menú lateral
+    cambiarContenido(itemUsuarios, seccionUsuarios);
+    cambiarContenido(itemIngresos, seccionIngresos);
 });
