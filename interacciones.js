@@ -3,14 +3,16 @@ var registrado = false;
 
 $(document).ready(function () {
     // Estilos e interacciones
+
     // Selectores generales
     menuItem = $("#menu li");
     labels = $("label");
     inputs = $("input");
-    
+
     // Secciones del menú lateral
     seccionIngresos = $("#generarIngresos");
     seccionUsuarios = $("#buscarUsuarios");
+    seccionSalidas = $("#manejarSalidas");
 
     // Items del menú lateral
     itemIngresos = $("#menu li#ingresos");
@@ -62,12 +64,18 @@ $(document).ready(function () {
     inputColor = $("input#color");
     inputPago = $("input#pago");
     inputFechaVencimiento = $("input#fechaVencimiento");
-    
-    // Label e input del formulario para buscar un usuario
+
+    // Labels e inputs del formulario para buscar un usuario
     inputIdentificacionBusquedaUsu = $("input#busqUsuario");
     labelIdentificacionBusquedaUsu = $("label[for='busqUsuario']");
     inputIdentificacionBusquedaUltUsu = $("input#busqUltimoUsuario");
     labelIdentificacionBusquedaUltUsu = $("label[for='busqUltimoUsuario']");
+
+    // Labels e inputs del formulario para gestionar las salidas
+    inputCodigoUltimo = $("input#codigoUltimo");
+    labelCodigoUltimo = $("label[for='codigoUltimo']");
+    inputPlacaUltimo = $("input#placaUltimo");
+    labelPlacaUltimo = $("label[for='placaUltimo']");
 
     // Para deshabilitar campos no requeridos al estar registrado
     inputsUsuario = $("#datosUsuario input:not(#codigo)");
@@ -161,6 +169,8 @@ $(document).ready(function () {
     cambiarFocus(inputPago, labelPago);
     cambiarFocus(inputIdentificacionBusquedaUsu, labelIdentificacionBusquedaUsu);
     cambiarFocus(inputIdentificacionBusquedaUltUsu, labelIdentificacionBusquedaUltUsu);
+    cambiarFocus(inputCodigoUltimo, labelCodigoUltimo);
+    cambiarFocus(inputPlacaUltimo, labelPlacaUltimo);
 
     // Items del menú lateral
     var menuItems = [
@@ -200,7 +210,7 @@ $(document).ready(function () {
             info.removeClass("menuInfoHover");
         });
     }
-    
+
     // Para el efecto al hover cada item del menú lateral
     hoverMenuItem(itemIngresos, iconIngresos, infoIngresos);
     hoverMenuItem(itemSalidas, iconSalidas, infoSalidas);
@@ -211,8 +221,22 @@ $(document).ready(function () {
     // Secciones del contenido
     var secciones = [
         seccionIngresos,
-        seccionUsuarios // Ir agregando a medida que se vayan implementando
+        seccionUsuarios,
+        seccionSalidas // Ir agregando a medida que se vayan implementando
     ];
+
+    function activarCamara() {
+        // Para volver a capturar los eventos al crearse denuevo el objeto de la cámara
+        btnCapturar = $("div#capturar");
+        btnCodigo = $("div#codigo");
+        btnCodigo.click(function () {
+            base64_a_campo($('#formfield'));
+        });
+
+        btnCapturar.click(function () {
+            base64_a_imagen($('#foto'));
+        });
+    }
 
     function cambiarContenido(menuItem, seccionVisible) {
         menuItem.click(function () {
@@ -220,13 +244,26 @@ $(document).ready(function () {
                 secciones[i].fadeOut("fast");
             }
             seccionVisible.fadeIn("fast");
+
+            if (seccionVisible == seccionSalidas) {
+                $("#camera-wrapper").html("");
+                $("#camera-wrapper-salidas").html(contenidoCamara);
+                crearCamara(camara);
+                activarCamara();
+            } else {
+                $("#camera-wrapper").html(contenidoCamara);
+                crearCamara(camara);
+                activarCamara();
+            }
         });
     }
-    
+
     // Oculta todas las secciones excepto la de inicial de ingresos
     seccionUsuarios.hide();
+    seccionSalidas.hide();
 
     // Para mostrar las secciones respectivas desde el menú lateral
     cambiarContenido(itemUsuarios, seccionUsuarios);
     cambiarContenido(itemIngresos, seccionIngresos);
+    cambiarContenido(itemSalidas, seccionSalidas);
 });

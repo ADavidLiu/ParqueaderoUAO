@@ -120,6 +120,10 @@ body {
   margin-left: 10px !important;
   transition: all .25s !important; }
 
+textarea {
+  width: 100%;
+  margin-top: 10px; }
+
 #contenido {
   padding-top: 15px;
   padding-bottom: 30px;
@@ -130,7 +134,7 @@ body {
     position: relative;
     left: 30px;
     cursor: pointer;
-    width: 160px;
+    width: 225px;
     margin-bottom: 40px; }
     #contenido .deshabilitar-wrapper .btn-deshabilitar {
       width: 16px;
@@ -198,6 +202,7 @@ body {
     position: relative;
     z-index: 6; }
   #contenido .btn-procesar {
+    text-align: center;
     background-color: #FFA800;
     border: none;
     color: white;
@@ -236,11 +241,9 @@ body {
       margin: 0; }
   #contenido #camera-wrapper {
     text-align: center; }
-    #contenido #camera-wrapper textarea {
-      width: 100%;
-      margin-top: 10px; }
   #contenido img#foto,
   #contenido #camara,
+  #contenido #camaraSalidas,
   #contenido img#fotoBusquedaUsu,
   #contenido img#fotoBusquedaUltUsu {
     border: 2px solid #FFA800;

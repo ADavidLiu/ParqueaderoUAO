@@ -4,7 +4,7 @@
 
     $placa = $_POST["placa"];
 
-    $sql = "DELETE FROM fichas WHERE placaVehiculoFicha = '$placa'";
+    $sql = "INSERT INTO salidas (placaVehiculoSalida, horaSalida) VALUES ('$placa', NOW())";
     $conexion->query($sql);
 
     $conexion->close();

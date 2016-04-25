@@ -11,7 +11,7 @@
     $edad = $_POST["edad"];
     $foto = $_POST["foto"];
     $pago = $_POST["pago"];
-    //$fechaVencimiento = $_POST["fechaVencimiento"];
+    $fechaVencimiento = $_POST["fechaVencimiento"];
 
     $existeUsuario = false;
 
@@ -26,11 +26,11 @@
             }
         }
         if ($existeUsuario == false) {
-            $sql = "INSERT INTO usuarios (codigo, nombre1, nombre2, apellido1, apellido2, identificacionUsu, edad, pago, foto) VALUES ('$codigo', '$nombre1', '$nombre2', '$apellido1', '$apellido2', '$identificacion', '$edad', '$pago', '$foto')";
+            $sql = "INSERT INTO usuarios (codigo, nombre1, nombre2, apellido1, apellido2, identificacionUsu, edad, pago, foto, pagoVencimiento) VALUES ('$codigo', '$nombre1', '$nombre2', '$apellido1', '$apellido2', '$identificacion', '$edad', '$pago', '$foto', '$fechaVencimiento')";
             $conexion->query($sql);
         }
     } else {
-        $sql = "INSERT INTO usuarios (codigo, nombre1, nombre2, apellido1, apellido2, identificacionUsu, edad, pago, foto) VALUES ('$codigo', '$nombre1', '$nombre2', '$apellido1', '$apellido2', '$identificacion', '$edad', '$pago', '$foto')";
+        $sql = "INSERT INTO usuarios (codigo, nombre1, nombre2, apellido1, apellido2, identificacionUsu, edad, pago, foto, pagoVencimiento) VALUES ('$codigo', '$nombre1', '$nombre2', '$apellido1', '$apellido2', '$identificacion', '$edad', '$pago', '$foto', '$fechaVencimiento')";
         $conexion->query($sql);
     }
 

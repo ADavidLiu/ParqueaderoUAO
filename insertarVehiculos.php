@@ -4,7 +4,6 @@
 
     // Variables recibidas a través de AJAX
     $placa = $_POST["placa"];
-    $registrado = $_POST["registradoIn"];
     $modelo = $_POST["modelo"];
     $color = $_POST["color"];
     
