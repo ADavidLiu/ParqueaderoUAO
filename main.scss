@@ -16,6 +16,26 @@ body {
     background-color: #F2F2F2;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+    cursor: default;
+}
+
+img {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 ::selection {
     background-color: #ef9d00;
     color: #ffffff;
@@ -337,7 +357,30 @@ textarea {
             font-size: 14px;
         }
     }
-    #manejarSalidas {}
+    #buscarFichas {
+        #numVehiculos {
+            text-align: center;
+            background-color: $color-accent;
+            color: white;
+            font-size: 60px;
+        }
+        #info {
+            margin-top: 45px;
+        }
+        .vehiculoEstacionado:not(:last-child) {
+            margin-bottom: 20px;
+        }
+        #btnRecargar {
+            margin: 20px 0;
+            text-align: center;
+            background-color: $color-accent;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 6px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+    }
 }
 
 
@@ -426,6 +469,68 @@ textarea {
     }
     .burbujaExtrasAyuda {
         bottom: 60px;
+    }
+}
+
+
+/* INFORMACIÓN LATERAL DE VEHÍCULOS */
+
+.desplegado {
+    right: 0 !important;
+}
+
+.infoVehiculo {
+    position: fixed;
+    z-index: 10;
+    height: 100vh;
+    width: 300px;
+    background-color: $color-bg-menu;
+    left: auto;
+    right: -300px;
+    transition: all .25s;
+    box-shadow: -2px 0 3px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 30px 15px 30px 15px;
+    img {
+        margin-bottom: 30px;
+    }
+    .informacion {
+        text-align: left;
+        margin-bottom: 10px;
+        h3 {
+            padding: 0;
+            font-family: $font-titles;
+            font-size: 14px;
+        }
+    }
+    .separador {
+        height: 1px;
+        width: 240px;
+        background-color: $color-accent;
+        margin: 5px 15px 15px 15px;
+    }
+}
+
+.btnCerrarInfoVehiculo {
+    padding: 0;
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    background-color: $color-accent;
+    color: white;
+    z-index: 11;
+    font-family: $font-titles;
+    left: 0;
+    right: auto;
+    cursor: pointer;
+    padding: 15px;
+    transition: all .25s;
+    h3 {
+        margin: 0;
+        cursor: pointer;
+    }
+    &:hover {
+        background-color: $color-accent-secondary;
     }
 }
 

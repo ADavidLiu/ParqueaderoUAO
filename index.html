@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="mapa.css">
 </head>
 
 <body>
@@ -32,6 +33,50 @@
             <div class="burbujaExtrasInfo">
                 <p>Proyecto final para la asignatura de Bases de Datos Multimedia 2016-01 UAO, por Andrés David Liu Fong y Nilson Jacob Gonzales Campo</p>
             </div>
+        </div>
+    </div>
+
+    <div class="infoVehiculo">
+        <div class="col-xs-12">
+            <img src="http://placehold.it/240x144" alt="Foto">
+        </div>
+
+        <div class="informacion col-xs-12">
+            <h3 class="label">Nombre 1: <span class="campo" id="nombre1"></span></h3>
+        </div>
+
+        <div class="informacion col-xs-12">
+            <h3 class="label">Nombre 2: <span class="campo" id="nombre2"></span></h3>
+        </div>
+        <div class="informacion col-xs-12">
+            <h3 class="label">Apellido 1: <span class="campo" id="apellido1"></span></h3>
+        </div>
+        <div class="informacion col-xs-12">
+            <h3 class="label">Apellido 2: <span class="campo" id="apellido2"></span></h3>
+        </div>
+        <div class="informacion col-xs-12">
+            <h3 class="label">Edad: <span class="campo" id="edad"></span></h3>
+        </div>
+        <div class="informacion col-xs-12">
+            <h3 class="label">Identificación: <span class="campo" id="identificacion"></span></h3>
+        </div>
+        <div class="informacion col-xs-12">
+            <h3 class="label">Código: <span class="campo" id="codigo"></span></h3>
+        </div>
+        
+        <div class="col-xs-12 separador"></div>
+        
+        <div class="informacion col-xs-12">
+            <h3 class="label">Placa: <span class="campo" id="placa"></span></h3>
+        </div>
+        <div class="informacion col-xs-12">
+            <h3 class="label">Modelo: <span class="campo" id="modelo"></span></h3>
+        </div>
+        <div class="informacion col-xs-12">
+            <h3 class="label">Color: <span class="campo" id="Color"></span></h3>
+        </div>
+        <div class="btnCerrarInfoVehiculo col-xs-12">
+            <h3>Ocultar</h3>
         </div>
     </div>
 
@@ -233,6 +278,87 @@
 
                         <div class="btn-procesar col-xs-12" id="insertarSalida">Procesar</div>
                     </form>
+                </section>
+
+                <section id="buscarFichas">
+                    <h2 class="col-xs-12">Vehículos estacionados</h2>
+                    <div class="col-xs-12 col-sm-5 seccion-formulario" id="numVehiculos"></div>
+                    <h2 class="col-xs-12" id="info">Información</h2>
+                    <!-- Contenido generado dependiendo del número de vehículos estacionados -->
+                </section>
+
+                <section id="ubicacionMapa">
+                    <h2 class="col-xs-12">Mapa del parqueadero</h2>
+
+                    <div class="col-xs-12 mapa">
+                        <div class="contenedor">
+                            <div class="linea1">
+                                <button class="btnFicha" id="lugar1">1</button>
+                                <button class="btnFicha" id="lugar2">2</button>
+                                <button class="btnFicha" id="lugar3">3</button>
+                                <button class="btnFicha" id="lugar4">4</button>
+                                <button class="btnFicha" id="lugar5">5</button>
+                                <button class="btnFicha" id="lugar6">6</button>
+                                <button class="btnFicha" id="lugar7">7</button>
+                                <button class="btnFicha" id="lugar8">8</button>
+                                <button class="btnFicha" id="lugar9">9</button>
+                                <button class="btnFicha" id="lugar10">10</button>
+                                <button class="btnFicha" id="lugar11">11</button>
+                                <button class="btnFicha" id="lugar12">12</button>
+                                <button class="btnFicha" id="lugar13">13</button>
+                                <button class="btnFicha" id="lugar14">14</button>
+                                <button class="btnFicha" id="lugar15">15</button>
+                                <button class="btnFicha" id="lugar16">16</button>
+                                <button class="btnFicha" id="lugar17">17</button>
+                                <button class="btnFicha" id="lugar18">18</button>
+                            </div>
+                            <div class="linea2">
+                                <button class="btnFicha" id="lugar19">19</button>
+                                <button class="btnFicha" id="lugar20">20</button>
+                                <button class="btnFicha" id="lugar21">21</button>
+                                <button class="btnFicha" id="lugar22">22</button>
+                                <button class="btnFicha" id="lugar23">23</button>
+                                <button class="btnFicha" id="lugar24">24</button>
+                                <button class="btnFicha" id="lugar25">25</button>
+                                <button class="btnFicha" id="lugar26">26</button>
+                                <button class="btnFicha" id="lugar27">27</button>
+                                <button class="btnFicha" id="lugar28">28</button>
+                                <button class="btnFicha" id="lugar29">29</button>
+                                <button class="btnFicha" id="lugar30">30</button>
+                                <button class="btnFicha" id="lugar31">31</button>
+                                <button class="btnFicha" id="lugar32">32</button>
+                                <button class="btnFicha" id="lugar33">33</button>
+                                <button class="btnFicha" id="lugar34">34</button>
+                                <button class="btnFicha" id="lugar35">35</button>
+                                <button class="btnFicha" id="lugar36">36</button>
+                            </div>
+                            <div class="linea3">
+                                <button class="btnFicha" id="lugar37">37</button>
+                                <button class="btnFicha" id="lugar38">38</button>
+                                <button class="btnFicha" id="lugar39">39</button>
+                                <button class="btnFicha" id="lugar40">40</button>
+                                <button class="btnFicha" id="lugar41">41</button>
+                                <button class="btnFicha" id="lugar42">42</button>
+                                <button class="btnFicha" id="lugar43">43</button>
+                                <button class="btnFicha" id="lugar44">44</button>
+                                <button class="btnFicha" id="lugar45">45</button>
+                                <button class="btnFicha" id="lugar46">46</button>
+                                <button class="btnFicha" id="lugar47">47</button>
+                                <button class="btnFicha" id="lugar48">48</button>
+                                <button class="btnFicha" id="lugar49">49</button>
+                                <button class="btnFicha" id="lugar50">50</button>
+                                <button class="btnFicha" id="lugar51">51</button>
+                                <button class="btnFicha" id="lugar52">52</button>
+                                <button class="btnFicha" id="lugar53">53</button>
+                                <button class="btnFicha" id="lugar54">54</button>
+                                <button class="btnFicha" id="lugar55">55</button>
+                                <button class="btnFicha" id="lugar56">56</button>
+                                <button class="btnFicha" id="lugar57">57</button>
+                                <button class="btnFicha" id="lugar58">58</button>
+                                <button class="btnFicha" id="lugar59">59</button>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </div>
 

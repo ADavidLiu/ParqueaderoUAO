@@ -1,0 +1,90 @@
+.mapa {
+    background-image: url("img/mapa.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 960px;
+    height: 400px;
+    padding: 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.contenedor {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-top: 2%;
+}
+
+.linea1,
+.linea2,
+.linea3 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    text-align: center;
+    font-weight: bold;
+}
+
+.linea1 button,
+.linea2 button {
+    border-style: none;
+    outline: none;
+    border: none;
+    background: none;
+    width: 4%;
+    height: 100%;
+    padding: 0;
+    -webkit-transition: background-color linear 0.25s, color 0.1s;
+    transition: background-color linear 0.25s, color 0.1s;
+}
+
+.linea3 button {
+    border-style: none;
+    outline: none;
+    border: none;
+    background: none;
+    width: 3%;
+    height: 100%;
+    padding: 0;
+    -webkit-transition: background-color linear 0.25s, color 0.1s;
+    transition: background-color linear 0.25s, color 0.1s;
+}
+
+.linea1 button:hover,
+.linea2 button:hover,
+.linea3 button:hover {
+    background: #FFA800;
+    color: white;
+}
+
+.linea1 {
+    width: 67.8%;
+    height: 15%;
+    margin-top: 1.1%;
+    margin-left: 6.7%;
+}
+
+.linea2 {
+    width: 67.6%;
+    height: 15%;
+    margin-top: 5.5%;
+    margin-left: 10.9%;
+}
+
+.linea3 {
+    margin-top: 6.2%;
+    margin-left: 6.1%;
+    width: 75%;
+    height: 15%;
+}
+
+.linea1 button:active,
+.linea2 button:active,
+.linea3 button:active {
+    background: #EF9D00;
+}

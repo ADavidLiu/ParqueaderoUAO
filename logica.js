@@ -64,7 +64,7 @@ fichaActual = $(".fichas h3");
 inputsTodos = $("input");
 
 // Número de lugares disponibles en el parqueadero
-var numFichas = 3;
+var numFichas = 59;
 fichaActual.text(numFichas); // Valor inicial
 
 // Campos para insertar los resultados de la búsqueda
@@ -86,6 +86,32 @@ btnSalidas = $("#insertarSalida");
 placaUltimo = $("input#placaUltimo");
 codigoUltimo = $("input#codigoUltimo");
 
+// Para buscar qué vehículos se encuentran estacionados, a través de las fichas
+itemFichas = $("#menu li#fichas");
+numVehiculosEstacionados = $("#numVehiculos");
+var vehiculoEstacionado = '<div class="col-xs-12 seccion-formulario vehiculoEstacionado"></div>';
+var vehiculos = [];
+
+// Recupera la información del parqueadero (Sección 'fichas')
+itemFichas.click(function () {
+    // Vacía el arreglo
+    vehiculos = [];
+    $.post("buscarVehiculosEstacionados.php", {}, function (info) {
+        // Actualiza el número de ocurrencias encontradas
+        numVehiculosEstacionados.text(info[0].numVehiculos);
+        // Remueve los anteriores y los actualiza
+        $("div.vehiculoEstacionado").remove();
+        
+        // Genera dinámicamente el contenido de cada vehículo estacionado
+        for (i = 0; i < info[0].numVehiculos; i++) {
+            seccionFichas.append(vehiculoEstacionado);
+            vehiculos.push($("div.vehiculoEstacionado:last"));
+            vehiculos[i].text("Placa: " + info[i].placa + " Modelo: " + info[i].modelo + " Color: " + info[i].color);
+        }
+    });
+});
+
+// Maneja las transacciones de las salidas
 btnSalidas.click(function () {
     $.post("eliminarFichas.php", {
         placa: placaUltimo.val()

@@ -13,6 +13,8 @@ $(document).ready(function () {
     seccionIngresos = $("#generarIngresos");
     seccionUsuarios = $("#buscarUsuarios");
     seccionSalidas = $("#manejarSalidas");
+    seccionFichas = $("#buscarFichas");
+    seccionUbicacion = $("#ubicacionMapa");
 
     // Items del menú lateral
     itemIngresos = $("#menu li#ingresos");
@@ -92,8 +94,29 @@ $(document).ready(function () {
     ayuda = $(".btn-extras .ayuda");
     burbujaAyuda = $(".btn-extras .ayuda-wrapper .burbujaExtrasAyuda");
 
+    // Para el botón de deshabilitar inputs cuando el vehículo ya se encuentre registrado
     btnDeshabilitarWrapper = $(".deshabilitar-wrapper");
     btnDeshabilitar = $(".btn-deshabilitar");
+
+    // Para el menú desplegable de la derecha con la información del usuario y vehículo correspondiente a una ficha
+    btnFicha = $(".btnFicha");
+    menuInfoVehiculo = $(".infoVehiculo");
+    btnCerrarInfoVehiculo = $(".btnCerrarInfoVehiculo");
+    var desplegado = false;
+
+    btnFicha.click(function () {
+        if (!desplegado) {
+            menuInfoVehiculo.addClass("desplegado");
+            desplegado = true;
+        }
+    });
+    
+    btnCerrarInfoVehiculo.click(function () {
+        if (desplegado) {
+            menuInfoVehiculo.removeClass("desplegado");
+            desplegado = false;
+        }
+    });
 
     btnDeshabilitarWrapper.click(function () {
         if (!registrado) {
@@ -222,7 +245,9 @@ $(document).ready(function () {
     var secciones = [
         seccionIngresos,
         seccionUsuarios,
-        seccionSalidas // Ir agregando a medida que se vayan implementando
+        seccionSalidas,
+        seccionFichas,
+        seccionUbicacion // Ir agregando a medida que se vayan implementando
     ];
 
     function activarCamara() {
@@ -245,6 +270,7 @@ $(document).ready(function () {
             }
             seccionVisible.fadeIn("fast");
 
+            // Para cambiar la ubicación de la cámara en el DOM
             if (seccionVisible == seccionSalidas) {
                 $("#camera-wrapper").html("");
                 $("#camera-wrapper-salidas").html(contenidoCamara);
@@ -261,9 +287,13 @@ $(document).ready(function () {
     // Oculta todas las secciones excepto la de inicial de ingresos
     seccionUsuarios.hide();
     seccionSalidas.hide();
+    seccionFichas.hide();
+    seccionUbicacion.hide();
 
     // Para mostrar las secciones respectivas desde el menú lateral
     cambiarContenido(itemUsuarios, seccionUsuarios);
     cambiarContenido(itemIngresos, seccionIngresos);
     cambiarContenido(itemSalidas, seccionSalidas);
+    cambiarContenido(itemFichas, seccionFichas);
+    cambiarContenido(itemUbicacion, seccionUbicacion);
 });
