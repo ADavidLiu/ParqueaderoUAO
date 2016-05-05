@@ -1,5 +1,9 @@
 @charset "UTF-8";
 /* VARIABLES */
+/* ICON-FONTS PARA EL INGRESO Y SALIDA DE CARROS */
+@font-face {
+  src: url("font-icons/cars.ttf");
+  font-family: 'cars'; }
 /* UNIVERSAL STYLES */
 body {
   background-color: #FFFFFF;
@@ -102,11 +106,13 @@ img {
         left: 50%;
         transform: translateX(-50%);
         opacity: 0;
-        transition: bottom .5s; }
+        transition: bottom .5s;
+        font-family: 'Oswald', sans-serif; }
       #menu ul li.active {
         background-color: #FFA800;
         border-bottom: none; }
-        #menu ul li.active i.fa {
+        #menu ul li.active i.fa,
+        #menu ul li.active i.cars {
           color: #c38000; }
       #menu ul li.active::after {
         content: "";
@@ -120,7 +126,8 @@ img {
         left: auto;
         top: 50%;
         transform: translateY(-50%); }
-      #menu ul li i.fa {
+      #menu ul li i.fa,
+      #menu ul li i.cars {
         color: #161c1f;
         font-size: 30px;
         position: absolute;
@@ -128,6 +135,12 @@ img {
         left: 50%;
         transform: translateX(-50%) translateY(-50%);
         transition: transform .5s; }
+      #menu ul li i.cars {
+        font-family: 'cars';
+        font-size: 38px;
+        left: 35px;
+        width: 40px;
+        height: 45px; }
 
 /* CONTENIDO STYLES */
 .inputsDeshabilitados {

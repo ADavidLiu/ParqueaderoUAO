@@ -31,8 +31,8 @@ $(document).ready(function () {
     infoUbicacion = $("#menu li#ubicacion h4");
 
     // Íconos de cada item del menú lateral
-    iconIngresos = $("#menu li#ingresos i.fa");
-    iconSalidas = $("#menu li#salidas i.fa");
+    iconIngresos = $("#menu li#ingresos i");
+    iconSalidas = $("#menu li#salidas i");
     iconUsuarios = $("#menu li#usuarios i.fa");
     iconFichas = $("#menu li#fichas i.fa");
     iconUbicacion = $("#menu li#ubicacion i.fa");

@@ -9,6 +9,12 @@ $color-text: #202629;
 $font-titles: "Oswald",
 sans-serif;
 
+/* ICON-FONTS PARA EL INGRESO Y SALIDA DE CARROS */
+@font-face {
+    src: url('font-icons/cars.ttf');
+    font-family: 'cars';
+}
+
 /* UNIVERSAL STYLES */
 
 body {
@@ -127,11 +133,13 @@ img {
                 transform: translateX(-50%);
                 opacity: 0;
                 transition: bottom .5s;
+                font-family: 'Oswald', sans-serif;
             }
             &.active {
                 background-color: $color-accent;
                 border-bottom: none;
-                i.fa {
+                i.fa,
+                i.cars {
                     color: #c38000;
                 }
             }
@@ -148,7 +156,8 @@ img {
                 top: 50%;
                 transform: translateY(-50%);
             }
-            i.fa {
+            i.fa,
+            i.cars {
                 color: #161c1f;
                 font-size: 30px;
                 position: absolute;
@@ -156,6 +165,13 @@ img {
                 left: 50%;
                 transform: translateX(-50%) translateY(-50%);
                 transition: transform .5s;
+            }
+            i.cars {
+                font-family: 'cars';
+                font-size: 38px;
+                left: 35px;
+                width: 40px;
+                height: 45px;
             }
         }
     }
