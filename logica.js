@@ -92,6 +92,43 @@ numVehiculosEstacionados = $("#numVehiculos");
 var vehiculoEstacionado = '<div class="col-xs-12 seccion-formulario vehiculoEstacionado"></div>';
 var vehiculos = [];
 
+mapaCampoNombre1 = $(".infoVehiculo span#nombre1");
+mapaCampoNombre2 = $(".infoVehiculo span#nombre2");
+mapaCampoApellido1 = $(".infoVehiculo span#apellido1");
+mapaCampoApellido2 = $(".infoVehiculo span#apellido2");
+mapaCampoEdad = $(".infoVehiculo span#edad");
+mapaCampoId = $(".infoVehiculo span#identificacion");
+mapaCampoCodigo = $(".infoVehiculo span#codigo");
+mapaCampoPlaca = $(".infoVehiculo span#placa");
+mapaCampoModelo = $(".infoVehiculo span#modelo");
+mapaCampoColor = $(".infoVehiculo span#color");
+mapaCampoFoto = $(".infoVehiculo img[alt='Foto']");
+
+// Para el mapa
+var selectoresBahias = [];
+var numeroBahias = 59;
+
+$(".mapa button").click(function () {
+    seleccionado = $(this).text();
+    console.log(seleccionado);
+    $.post("buscarVehiculoMapa.php", {
+        bahia: seleccionado
+    }, function (info) {
+        mapaCampoNombre1.text(info[0].nombre1);
+        mapaCampoNombre2.text(info[0].nombre2);
+        mapaCampoApellido1.text(info[0].apellido1);
+        mapaCampoApellido2.text(info[0].apellido2);
+        mapaCampoEdad.text(info[0].edad);
+        mapaCampoId.text(info[0].id);
+        mapaCampoCodigo.text(info[0].codigo);
+        mapaCampoPlaca.text(info[0].placa);
+        mapaCampoModelo.text(info[0].modelo);
+        mapaCampoColor.text(info[0].color);
+        mapaCampoFoto.attr("src", info[0].foto);
+    });
+});
+
+
 // Recupera la información del parqueadero (Sección 'fichas')
 itemFichas.click(function () {
     // Vacía el arreglo
@@ -101,7 +138,7 @@ itemFichas.click(function () {
         numVehiculosEstacionados.text(info[0].numVehiculos);
         // Remueve los anteriores y los actualiza
         $("div.vehiculoEstacionado").remove();
-        
+
         // Genera dinámicamente el contenido de cada vehículo estacionado
         for (i = 0; i < info[0].numVehiculos; i++) {
             seccionFichas.append(vehiculoEstacionado);
@@ -213,7 +250,8 @@ formularioIngresos.on("submit", function (event) {
 
         $.post("insertarFichas.php", {
             codigo: codigoIn.val(),
-            placa: placaIn.val()
+            placa: placaIn.val(),
+            bahia: numFichas
         }, function () {
             alert("Ficha procesada...");
         });
