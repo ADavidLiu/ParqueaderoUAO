@@ -9,6 +9,8 @@
     $sql = "INSERT INTO fichas (codigoUsuarioFicha, placaVehiculoFicha, bahia) VALUES ('$codigoUsuarioFicha', '$placaVehiculoFicha', '$bahia')";
     $conexion->query($sql);
 
+    echo $sql;
+
     $conexion->close();
 
 ?>
