@@ -11,18 +11,11 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="main.css">
     <link rel="stylesheet" type="text/css" href="mapa.css">
 </head>
 
 <body>
-
-    <div class="notificacion-wrapper">
-        <div class="notificacion col-xs-10 col-sm-8 col-md-6" id="notif">
-            <h3></h3>
-        </div>
-    </div>
 
     <div class="btn-extras">
         <div class="ayuda-wrapper">
@@ -70,9 +63,9 @@
         <div class="informacion col-xs-12">
             <h3 class="label">Código: <span class="campo" id="codigo"></span></h3>
         </div>
-
+        
         <div class="col-xs-12 separador"></div>
-
+        
         <div class="informacion col-xs-12">
             <h3 class="label">Placa: <span class="campo" id="placa"></span></h3>
         </div>
@@ -132,11 +125,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="codigo">Código<span class="requerido">*</span></label>
-                                    <input  type="text" class="form-control" id="codigo">
+                                    <input required type="text" class="form-control" id="codigo">
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre1">Nombre 1<span class="requerido">*</span></label>
-                                    <input  type="text" class="form-control" id="nombre1">
+                                    <input required type="text" class="form-control" id="nombre1">
                                 </div>
                                 <div class="form-group">
                                     <label for="nombre2">Nombre 2</label>
@@ -144,7 +137,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido1">Apellido 1<span class="requerido">*</span></label>
-                                    <input  type="text" class="form-control" id="apellido1">
+                                    <input required type="text" class="form-control" id="apellido1">
                                 </div>
                                 <div class="form-group">
                                     <label for="apellido2">Apellido 2</label>
@@ -152,11 +145,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="identificacionUsu">Identificación<span class="requerido">*</span></label>
-                                    <input  type="text" class="form-control" id="identificacionUsu">
+                                    <input required type="text" class="form-control" id="identificacionUsu">
                                 </div>
                                 <div class="form-group">
                                     <label for="edad">Edad<span class="requerido">*</span></label>
-                                    <input  type="number" class="form-control" id="edad">
+                                    <input required type="number" class="form-control" id="edad">
                                 </div>
 
                                 <!-- CÁMARA -->
@@ -171,26 +164,26 @@
 
                                 <div class="form-group">
                                     <label for="pago">¿Pagó?<span class="requerido">*</span></label>
-                                    <input  type="number" class="form-control" id="pago" min="0" max="1">
+                                    <input required type="number" class="form-control" id="pago" min="0" max="1">
                                 </div>
                                 <div class="form-group">
                                     <label id="fechaLabel" for="fechaVencimiento">Fecha de vencimiento<span class="requerido">*</span></label>
-                                    <input  type="date" class="form-control" id="fechaVencimiento">
+                                    <input required type="date" class="form-control" id="fechaVencimiento">
                                 </div>
                             </div>
 
                             <div class="col-xs-12 col-sm-5 col-sm-offset-1 seccion-formulario" id="datosVehiculo">
                                 <div class="form-group">
                                     <label for="placa">Placa<span class="requerido">*</span></label>
-                                    <input  type="text" class="form-control" id="placa">
+                                    <input required type="text" class="form-control" id="placa">
                                 </div>
                                 <div class="form-group">
                                     <label for="modelo">Modelo<span class="requerido">*</span></label>
-                                    <input  type="text" class="form-control" id="modelo">
+                                    <input required type="text" class="form-control" id="modelo">
                                 </div>
                                 <div class="form-group">
                                     <label for="color">Color<span class="requerido">*</span></label>
-                                    <input  type="text" class="form-control" id="color">
+                                    <input required type="text" class="form-control" id="color">
                                 </div>
                             </div>
 
@@ -214,7 +207,7 @@
                         <div class="col-xs-12 col-sm-5 seccion-formulario" id="busquedaUsuarios">
                             <div class="form-group col-xs-12 col-sm-9">
                                 <label for="busqUsuario">Código usuario...<span class="requerido">*</span></label>
-                                <input  type="text" class="form-control" id="busqUsuario">
+                                <input required type="text" class="form-control" id="busqUsuario">
                             </div>
                             <div class="btnCam col-xs-12 col-sm-3" id="mostrarUsuario">Mostrar</div>
                             <img id="fotoBusquedaUsu" />
@@ -249,7 +242,7 @@
                         <div class="col-xs-12 col-sm-5 col-sm-offset-1 seccion-formulario" id="busquedaUltimosUsuarios">
                             <div class="form-group col-xs-12 col-sm-9">
                                 <label for="busqUltimoUsuario">Placa del vehículo...<span class="requerido">*</span></label>
-                                <input  type="text" class="form-control" id="busqUltimoUsuario">
+                                <input required type="text" class="form-control" id="busqUltimoUsuario">
                             </div>
                             <div class="btnCam col-xs-12 col-sm-3" id="mostrarUltimoUsuario">Mostrar</div>
                             <img id="fotoBusquedaUltUsu" />
@@ -275,11 +268,11 @@
                         <div class="col-xs-12 col-sm-5 col-sm-offset-1 seccion-formulario" id="eliminarFichas">
                             <div class="form-group">
                                 <label for="codigoUltimo">Código<span class="requerido">*</span></label>
-                                <input  type="text" class="form-control" id="codigoUltimo">
+                                <input required type="text" class="form-control" id="codigoUltimo">
                             </div>
                             <div class="form-group">
                                 <label for="placaUltimo">Placa<span class="requerido">*</span></label>
-                                <input  type="text" class="form-control" id="placaUltimo">
+                                <input required type="text" class="form-control" id="placaUltimo">
                             </div>
                         </div>
 

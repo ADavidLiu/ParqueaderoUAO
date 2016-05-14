@@ -48,39 +48,6 @@ img {
 .inputHover {
   border-bottom: 3px solid #FFA800 !important; }
 
-/* NOTIFICACI├ôN STYLES */
-@keyframes aparece {
-  0% {
-    opacity: 0;
-    top: 10%; }
-  50%, 80% {
-    opacity: 1;
-    top: 15%; }
-  100% {
-    opacity: 0;
-    top: 20%;
-    display: none;
-    visibility: hidden; } }
-.notificacion {
-  text-align: center;
-  background-color: #FFA800;
-  padding: 25px;
-  position: fixed;
-  z-index: 20;
-  top: 15%;
-  left: 50%;
-  transform: translateY(-15%) translateX(-50%);
-  border-radius: 6px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  animation: aparece 1.5s;
-  animation-fill-mode: forwards; }
-  .notificacion h3 {
-    margin: 0;
-    font-family: "Oswald", sans-serif;
-    color: white;
-    font-size: 18px;
-    line-height: 25px; }
-
 /* MENU STYLES */
 #menu {
   background-color: #273238;
