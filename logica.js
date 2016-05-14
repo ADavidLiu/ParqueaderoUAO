@@ -102,7 +102,7 @@ mapaCampoCodigo = $(".infoVehiculo span#codigo");
 mapaCampoPlaca = $(".infoVehiculo span#placa");
 mapaCampoModelo = $(".infoVehiculo span#modelo");
 mapaCampoColor = $(".infoVehiculo span#color");
-mapaCampoFoto = $(".infoVehiculo img[alt='Foto']");
+mapaCampoFoto = $(".infoVehiculo img");
 
 // Para el mapa
 var selectoresBahias = [];
@@ -124,8 +124,11 @@ $(".mapa button").click(function () {
         mapaCampoPlaca.text(info[0].placa);
         mapaCampoModelo.text(info[0].modelo);
         mapaCampoColor.text(info[0].color);
-        mapaCampoFoto.attr("src", info[0].foto);
-    });
+        mostrarImagen(mapaCampoFoto, info[0].foto);
+        // Resize a la imagen
+        mapaCampoFoto.width(240);
+        mapaCampoFoto.height(144);
+    }, "json");
 });
 
 
@@ -148,8 +151,22 @@ itemFichas.click(function () {
     });
 });
 
+// Para las notificaciones de procesos realizados
+var notificacion = $(".notificacion-wrapper").html(); // Obtiene el contenido de notificación para reusarse
+$(".notificacion-wrapper").remove(); // Lo elimina
+
+function feedback(texto) {
+    $("body").prepend(notificacion);
+    $(".notificacion h3").text(texto);
+
+    setTimeout(function () {
+        $(".notificacion").remove();
+    }, 2000);
+}
+
 // Maneja las transacciones de las salidas
 btnSalidas.click(function () {
+    abierto = true;
     $.post("eliminarFichas.php", {
         placa: placaUltimo.val()
     }, function () {
@@ -166,7 +183,7 @@ btnSalidas.click(function () {
     $.post("insertarSalida.php", {
         placa: placaUltimo.val()
     }, function () {
-        alert("Salida procesada");
+        feedback("Salida procesada");
     });
 });
 
@@ -208,7 +225,7 @@ formularioIngresos.on("submit", function (event) {
         if (numFichas <= 0) {
             fichaActual.text("Lleno");
             numFichas = 0;
-            alert("Parqueadero lleno!");
+            feedback("Parqueadero lleno!");
         } else {
             fichaActual.text(numFichas);
         }
@@ -220,7 +237,7 @@ formularioIngresos.on("submit", function (event) {
                 color: colorIn.val()
             }, function () {
                 // Sólo para debug
-                alert("Vehículo procesado...");
+                feedback("Vehículo procesado...");
             });
 
             $.post("insertarUsuarios.php", {
@@ -236,7 +253,7 @@ formularioIngresos.on("submit", function (event) {
                 fechaVencimiento: fechaVencimientoIn.val()
             }, function (respuesta) {
                 // Sólo para debug
-                alert("Usuario procesado...");
+                feedback("Usuario procesado...");
             });
         } else {
             $.post("insertarEntrada.php", {
@@ -244,7 +261,7 @@ formularioIngresos.on("submit", function (event) {
                 registradoIn: registrado
             }, function () {
                 // Sólo para debug
-                alert("Entrada procesada...");
+                feedback("Entrada procesada...");
             });
         }
 
@@ -252,12 +269,13 @@ formularioIngresos.on("submit", function (event) {
             codigo: codigoIn.val(),
             placa: placaIn.val(),
             bahia: numFichas
-        }, function () {
-            alert("Ficha procesada...");
+        }, function (data) {
+            console.log("data: " + data);
+            feedback("Ficha procesada...");
         });
     } else {
         fichaActual.text("Lleno");
         numFichas = 0;
-        alert("Parqueadero lleno!");
+        feedback("Parqueadero lleno!");
     }
 });
