@@ -103,15 +103,40 @@ mapaCampoPlaca = $(".infoVehiculo span#placa");
 mapaCampoModelo = $(".infoVehiculo span#modelo");
 mapaCampoColor = $(".infoVehiculo span#color");
 mapaCampoFoto = $(".infoVehiculo img");
+mapaCampoEstadia = $(".infoVehiculo span#tiempo");
 
 // Para el mapa
 var selectoresBahias = [];
 var numeroBahias = 59;
+var intervalo;
+
+function calcularTiempoEstadia(fecha) {
+    // Convierte el string en un objeto Date
+    var entrada = fecha.split(/[- :]/);
+    var fechaEntrada = new Date(entrada[0], entrada[1] - 1, entrada[2], entrada[3], entrada[4], entrada[5]);
+    // Obtiene la fecha actual
+    var fechaActual = new Date();
+
+    // Reealiza la comparación
+    var estadia = fechaActual - fechaEntrada;
+
+    var segundosEstadia = estadia / 1000;
+    var horasEstadia = Math.floor(segundosEstadia / 3600);
+    var minutosEstadia = Math.floor(segundosEstadia % 3600) / 60;
+
+    var tiempoEstadia = ((horasEstadia < 10) ? ("0" + horasEstadia) : horasEstadia) + ":" + ((minutosEstadia < 10) ? ("0" + minutosEstadia) : minutosEstadia)
+
+    // Muestra el tiempo de estadía en la interfaz y lo limita a 8 caracteres, cada 1 segundo
+    mapaCampoEstadia.text(tiempoEstadia.substr(0, 8));
+}
 
 $(".mapa button").click(function () {
     seleccionado = $(this).text();
-    console.log(seleccionado);
-    $.post("buscarVehiculoMapa.php", {
+    var obtenerVehiculoMapa;
+    var placaSeleccionada;
+    // Reinicia el intervalo
+    clearInterval(intervalo);
+    obtenerVehiculoMapa = $.post("buscarVehiculoMapa.php", {
         bahia: seleccionado
     }, function (info) {
         mapaCampoNombre1.text(info[0].nombre1);
@@ -128,7 +153,20 @@ $(".mapa button").click(function () {
         // Resize a la imagen
         mapaCampoFoto.width(240);
         mapaCampoFoto.height(144);
+        // Se almacena el valor de la placa
+        placaSeleccionada = info[0].placa;
     }, "json");
+
+    // Cuando se haya completado el POST request
+    obtenerVehiculoMapa.done(function () {
+        intervalo = setInterval(function () {
+            $.post("horaEntrada.php", {
+                placa: placaSeleccionada
+            }, function (horaEntrada) {
+                calcularTiempoEstadia(horaEntrada);
+            });
+        }, 1000);
+    });
 });
 
 

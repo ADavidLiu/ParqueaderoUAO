@@ -566,6 +566,22 @@ textarea {
         background-color: $color-accent;
         margin: 5px 15px 15px 15px;
     }
+    .tiempoEstadia {
+        position: absolute;
+        background-color: #c38000;
+        padding: 10px 0;
+        width: 300px;
+        top: auto;
+        bottom: 56px;
+        left: 0;
+        right: auto;
+        h3 {
+            margin: 0;
+            font-size: 16px;
+            font-family: $font-titles;
+            color: white;
+        }
+    }
 }
 
 .btnCerrarInfoVehiculo {
