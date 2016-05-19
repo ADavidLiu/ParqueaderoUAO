@@ -104,13 +104,30 @@ $(document).ready(function () {
     btnCerrarInfoVehiculo = $(".btnCerrarInfoVehiculo");
     var desplegado = false;
 
+    // Para el ícono del menú en mobile
+    btnMenuIcon = $(".menu-icon");
+    menuBarraLateral = $("nav#menu");
+    var btnMenuAbierto = false;
+
+    btnMenuIcon.click(function () {
+        if (!btnMenuAbierto) {
+            btnMenuIcon.css("left", 100);
+            menuBarraLateral.css("left", 80);
+            btnMenuAbierto = true;
+        } else {
+            btnMenuIcon.css("left", 20);
+            menuBarraLateral.css("left", 0);
+            btnMenuAbierto = false;
+        }
+    });
+
     btnFicha.click(function () {
         if (!desplegado) {
             menuInfoVehiculo.addClass("desplegado");
             desplegado = true;
         }
     });
-    
+
     btnCerrarInfoVehiculo.click(function () {
         if (desplegado) {
             menuInfoVehiculo.removeClass("desplegado");

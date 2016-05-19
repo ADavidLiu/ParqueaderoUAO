@@ -10,10 +10,12 @@ $font-titles: "Oswald",
 sans-serif;
 
 /* ICON-FONTS PARA EL INGRESO Y SALIDA DE CARROS */
+
 @font-face {
     src: url('font-icons/cars.ttf');
     font-family: 'cars';
 }
+
 
 /* UNIVERSAL STYLES */
 
@@ -69,6 +71,7 @@ img {
     border-bottom: 3px solid $color-accent !important;
 }
 
+
 /* NOTIFICACIÓN STYLES */
 
 @keyframes aparece {
@@ -76,7 +79,8 @@ img {
         opacity: 0;
         top: 10%;
     }
-    50%, 80% {
+    50%,
+    80% {
         opacity: 1;
         top: 15%;
     }
@@ -117,12 +121,13 @@ img {
     background-color: $color-bg-menu;
     min-height: 100vh;
     position: fixed;
-    display: none;
+    //display: none;
     text-align: center;
     padding: 0;
     width: 80px;
     transform: translateX(-100%);
     z-index: 2;
+    transition: all .25s;
     ul {
         list-style: none;
         padding-left: 0;
@@ -550,6 +555,8 @@ textarea {
     padding: 30px 15px 30px 15px;
     img {
         margin-bottom: 30px;
+        width: 240px;
+        height: 144px;
     }
     .informacion {
         text-align: left;
@@ -607,15 +614,54 @@ textarea {
     }
 }
 
+.menu-icon {
+    background-color: $color-accent;
+    border-radius: 100%;
+    color: white;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 20;
+    top: 20px;
+    left: 20px;
+    transition: all .25s;
+    i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        font-size: 20px;
+    }
+}
+
 
 /* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+    #contenido #generarIngresos h2#top {
+        display: none;
+    }
+    #menu {
+        ul li.barra-horizontal {
+            display: none;
+        }
+    }
+}
 
 @media screen and (min-width: 768px) {
     #menu {
         display: block;
         transform: translateX(0);
     }
+    .menu-icon {
+        display: none;
+    }
     #contenido {
         padding-top: 100px;
+        #generarIngresos h2#bottom {
+            display: none;
+        }
     }
 }

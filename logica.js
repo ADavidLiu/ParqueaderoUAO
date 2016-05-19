@@ -134,8 +134,22 @@ $(".mapa button").click(function () {
     seleccionado = $(this).text();
     var obtenerVehiculoMapa;
     var placaSeleccionada;
-    // Reinicia el intervalo
+    
+    // Reinicia todos los campos
     clearInterval(intervalo);
+    mapaCampoNombre1.text("");
+    mapaCampoNombre2.text("");
+    mapaCampoApellido1.text("");
+    mapaCampoApellido2.text("");
+    mapaCampoEdad.text("");
+    mapaCampoId.text("");
+    mapaCampoCodigo.text("");
+    mapaCampoPlaca.text("");
+    mapaCampoModelo.text("");
+    mapaCampoColor.text("");
+    mapaCampoFoto.attr("src", "img/foto.png");
+    mapaCampoEstadia.text("");
+    
     obtenerVehiculoMapa = $.post("buscarVehiculoMapa.php", {
         bahia: seleccionado
     }, function (info) {
