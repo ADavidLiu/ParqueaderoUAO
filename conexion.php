@@ -2,7 +2,7 @@
     // Inicia la conexión predefinida con la base de datos
     $servername = "localhost";
     $username = "root";
-    $password = "Simsklapaucius96"; // Password de la base de datos local
+    $password = "root"; // Password de la base de datos local
     $dbname = "parqueaderouao";
     
     // Crea la conexión
